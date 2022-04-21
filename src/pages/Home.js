@@ -1,4 +1,16 @@
+import { useState } from 'react';
+import { v4 as uuidV4 } from 'uuid';
+
 export default function Home() {
+  const [roomId, setRoomId] = useState('');
+  const [username, setUsername] = useState('');
+
+  const createNewRoom = (e) => {
+    e.preventDefault();
+    const id = uuidV4();
+    setRoomId(id);
+  };
+
   return (
     <div className='homePageWrapper'>
       <div className='formWrapper'>
@@ -9,15 +21,27 @@ export default function Home() {
         />
         <h4 className='mainLabel'>Paste invitation ROOM ID</h4>
         <div className='inputGroup'>
-          <input type='text' className='inputBox' placeholder='ROOM ID' />
+          <input
+            type='text'
+            className='inputBox'
+            placeholder='ROOM ID'
+            onChange={(e) => setRoomId(e.target.value)}
+            value={roomId}
+          />
 
-          <input type='text' className='inputBox' placeholder='USER NAME' />
+          <input
+            type='text'
+            className='inputBox'
+            placeholder='USER NAME'
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
 
           <button className='btn joinBtn'>Join</button>
 
           <span className='createInfo'>
             If you don't have an invite then create &nbsp;
-            <a href='' className='createNewBtn'>
+            <a onClick={createNewRoom} href='' className='createNewBtn'>
               new room
             </a>
           </span>
