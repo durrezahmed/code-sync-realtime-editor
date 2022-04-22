@@ -6,7 +6,7 @@ export default function EditorPage() {
   const [clients, setClients] = useState([
     { socketId: 1, username: 'Durrez A' },
     { socketId: 2, username: 'John Doe' },
-    { socketId: 2, username: 'Jane Doe' },
+    { socketId: 3, username: 'Jane Doe' },
   ]);
 
   return (
