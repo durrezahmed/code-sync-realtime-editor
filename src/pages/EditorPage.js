@@ -28,6 +28,10 @@ export default function EditorPage() {
     }
   };
 
+  const leaveRoom = () => {
+    reactNavigator('/');
+  };
+
   useEffect(() => {
     const init = async () => {
       socketRef.current = await initSocket();
@@ -103,7 +107,9 @@ export default function EditorPage() {
         <button className='btn copyBtn' onClick={copyRoomId}>
           Copy ROOM ID
         </button>
-        <button className='btn leaveBtn'>Leave</button>
+        <button className='btn leaveBtn' onClick={leaveRoom}>
+          Leave
+        </button>
       </div>
       <div className='editorWrap'>
         <Editor socketRef={socketRef} roomId={roomId} />
