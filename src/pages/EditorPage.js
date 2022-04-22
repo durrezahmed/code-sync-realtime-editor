@@ -18,6 +18,16 @@ export default function EditorPage() {
   const reactNavigator = useNavigate();
   const [clients, setClients] = useState([]);
 
+  const copyRoomId = async () => {
+    try {
+      await navigator.clipboard.writeText(roomId);
+      toast.success('ROOM ID has been copied to your clipboard.');
+    } catch (err) {
+      toast.error('Could not copy the ROOM ID.');
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     const init = async () => {
       socketRef.current = await initSocket();
@@ -90,7 +100,9 @@ export default function EditorPage() {
           </div>
         </div>
 
-        <button className='btn copyBtn'>Copy ROOM ID</button>
+        <button className='btn copyBtn' onClick={copyRoomId}>
+          Copy ROOM ID
+        </button>
         <button className='btn leaveBtn'>Leave</button>
       </div>
       <div className='editorWrap'>
