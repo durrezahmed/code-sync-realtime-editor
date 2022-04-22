@@ -25,6 +25,7 @@ export default function Home() {
     // Redirect
     navigate(`/editor/${roomId}`, {
       state: {
+        roomId,
         username,
       },
     });
